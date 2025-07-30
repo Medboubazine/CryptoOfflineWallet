@@ -1,7 +1,5 @@
 import type WalletCredentialsInterface from '@/core/Interfaces/Credentials/WalletCredentialsInterface';
 import type ChainInterface from '@/core/Interfaces/Chains/ChainInterface'
-import EthereumMainnet from '@/core/Chains/EthereumMainnet/EthereumMainnet';
-import BSCMainnet from '@/core/Chains/BSCMainnet/BSCMainnet';
 import EVMWallet from '@/core/Wallets/EVMWallet';
 import { defineStore } from 'pinia'
 import { EVM_CHAINS } from '@/configs/chains';
@@ -28,7 +26,7 @@ export const useCreateWalletStore = defineStore('create-wallet', {
             //loading
             this.$state.loading = true
             try {
-                if (EVM_CHAINS.includes(chain)) {
+                if (EVM_CHAINS.some(item => item.constructor.name === chain.constructor.name)) {
                     ///
                     /// EVM ETH|BSC|... WALLET
                     ///

@@ -1,20 +1,19 @@
 <template>
-    <div v-if="visible" :class="[
-        'rounded-lg px-4 py-3 mb-4 flex items-center justify-between',
-        typeClass
-    ]" role="alert">
-        <span class="text-sm font-medium">{{ message }}</span>
-        <button @click="visible = false" class="text-lg font-bold ml-4">&times;</button>
+    <div v-if="visible" :class="['rounded-lg px-4 py-3 mb-4 flex items-center justify-between', typeClass]" role="alert">
+        <div class="text-sm font-medium">
+            {{ message }}
+            <slot></slot>
+        </div>
     </div>
 </template>
 
-<script>
+<script lang="ts">
 export default {
     name: 'Alert',
     props: {
         message: {
             type: String,
-            required: true
+            required: false,
         },
         type: {
             type: String,

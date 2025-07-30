@@ -43,12 +43,13 @@
 </template>
 <script lang="ts">
 import EVMWalletCredentials from "@/core/Elements/EVMWalletCredentials";
-import Alert from "@/components/alerts/Alert.vue";
-import CopyIcon from "../icons/CopyIcon.vue";
-import PrintIcon from "../icons/PrintIcon.vue";
 import BSCMainnet from "@/core/Chains/BSCMainnet/BSCMainnet";
 import EthereumMainnet from "@/core/Chains/EthereumMainnet/EthereumMainnet";
 import { EVM_CHAINS } from "@/configs/chains";
+import Alert from "@/components/alerts/Alert.vue";
+import CopyIcon from "../icons/CopyIcon.vue";
+import PrintIcon from "../icons/PrintIcon.vue";
+
 import * as QRCode from 'qrcode'
 
 export default {
@@ -80,7 +81,7 @@ export default {
         async CopyText(text: string) {
             return await navigator.clipboard.writeText(text);
         },
-        async generateQrSvgElement(content: string, size: number = 200): Promise<SVGElement> {
+        async generateQrSvgElement(content: string, size: number = 200): Promise<string> {
             const svgMarkup = await QRCode.toString(content, {
                 type: 'svg',
                 width: size,

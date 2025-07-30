@@ -43,4 +43,9 @@ export default interface ChainInterface {
      * @returns object
      */
     addresses(): ChainTokenInterface[];
+    /**
+     * Wallet explorer link 
+     * @returns object
+     */
+    exploreAddress(address: string): string
 }

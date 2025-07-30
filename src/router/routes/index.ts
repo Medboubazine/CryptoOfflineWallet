@@ -21,6 +21,31 @@ const routes = [
         name: 'wallet.balance',
         component: () => import('@/views/wallet/BalanceView.vue'),
     },
+    {
+        path: '/wallets/:chain/:address/transfers',
+        name: 'wallet.transfers',
+        component: () => import('@/views/transfer/TransfersListView.vue'),
+    },
+    {
+        path: '/wallets/:chain/:address/transfer',
+        name: 'wallet.transfer',
+        component: () => import('@/views/transfer/TransferView.vue'),
+    },
+    {
+        path: '/wallets/:chain/:address/transfer-build',
+        name: 'wallet.transfer-build',
+        component: () => import('@/views/transfer/BuildTransferView.vue'),
+    },
+    {
+        path: '/wallets/:chain/:address/transfer-sign',
+        name: 'wallet.transfer-sign',
+        component: () => import('@/views/transfer/SignTransferView.vue'),
+    },
+    {
+        path: '/wallets/:chain/:address/transfer-send',
+        name: 'wallet.transfer-send',
+        component: () => import('@/views/transfer/SendTransferView.vue'),
+    },
 ]
 
 export default routes

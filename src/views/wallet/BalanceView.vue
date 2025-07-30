@@ -1,6 +1,10 @@
 <template>
-    <MainLayout>
+    <WalletLayout>
         <div class="grid grid-cols-6 gap-4" v-if="chain" :key="chain.slug">
+            <div class="col-span-full text-center">
+                <h2 class="text-lg font-semibold">{{ chain.name }}</h2>
+                <a class="text-sm hover:text-blue-500 cursor-pointer" :href="chain.exploreAddress(wallet_address)" target="_blank">{{ wallet_address }}</a>
+            </div>
             <div class="col-span-3" v-if="store.getBalanceWallet">
                 <div class="w-full bg-white rounded-2xl shadow p-6 border border-gray-200">
                     <h2 class="text-sm text-gray-500 font-medium mb-1">{{ store.getBalanceWallet.symbol }} Balance</h2>
@@ -37,10 +41,10 @@
             </div>
 
         </div>
-    </MainLayout>
+    </WalletLayout>
 </template>
 <script lang="ts">
-import MainLayout from "@/components/layouts/Layout.vue";
+import WalletLayout from "@/components/layouts/WalletLayout.vue";
 import { EVM_CHAINS, SUPPORTED_CHAINS, FindChain } from "@/configs/chains";
 import type ChainInterface from "@/core/Interfaces/Chains/ChainInterface";
 import { useShowWalletStore } from "@/stores/show-wallet";
@@ -64,6 +68,8 @@ export default {
         return DATA;
     },
     async mounted() {
+        //cllear
+        store.Clear()
         //
         const wallet_address = this.$route.params.address;
         const chain_slug = this.$route.params.chain;
@@ -139,7 +145,7 @@ export default {
         }
     },
     components: {
-        MainLayout,
+        WalletLayout,
     }
 }
 </script>

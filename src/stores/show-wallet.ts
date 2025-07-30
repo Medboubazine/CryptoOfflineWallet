@@ -30,6 +30,15 @@ export const useShowWalletStore = defineStore('show-wallet', {
     // could also be defined as
     // state: () => ({ count: 0 })
     actions: {
+        async Clear(){
+            this.$state.balance.loading = false
+            this.$state.balance.wallet = null
+            this.$state.balance.message = null
+            //
+            this.$state.token_balance.loading = false
+            this.$state.token_balance.wallet = null
+            this.$state.token_balance.message = null
+        },
         async fetchWalletBalance(chain: ChainInterface,address: string): Promise<boolean> {
             //loading
             this.$state.balance.loading = true

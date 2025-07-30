@@ -58,4 +58,11 @@ export default class BSCMainnet implements ChainInterface {
             new BSCMainnetTokenXRP,
         ]
     }
+    /**
+     * Wallet explorer link 
+     * @returns object
+     */
+    exploreAddress(address: string): string {
+        return `${this.explorer}/address/${address}`;
+    }
 }

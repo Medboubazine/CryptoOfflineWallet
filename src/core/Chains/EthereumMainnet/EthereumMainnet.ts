@@ -57,4 +57,11 @@ export default class EthereumMainnet implements ChainInterface {
             new EthereumMainnetTokenUSDT
         ]
     }
+    /**
+     * Wallet explorer link 
+     * @returns object
+     */
+    exploreAddress(address: string): string {
+        return `${this.explorer}/address/${address}`;
+    }
 }
